@@ -33,10 +33,10 @@ export function Footer({ onNavigate }: FooterProps) {
                 e.preventDefault();
                 onNavigate('/');
               }}
-              aria-label="InstantExperts Home"
+              aria-label="Expertaid Technologies Home"
               className="inline-flex items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5EB3F6] rounded"
             >
-              <BrandLogo className="h-11 sm:h-12 w-auto max-w-[240px]" />
+              <BrandLogo className="h-14 sm:h-16 w-auto max-w-[280px]" />
             </a>
             <p className="text-sm font-medium text-[#8AC8FA]">
               Smart Technology. Expert Solutions.
@@ -107,7 +107,7 @@ export function Footer({ onNavigate }: FooterProps) {
                     }}
                     className="text-sm text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
                   >
-                    {product.name.replace('InstantExperts ', '')}
+                    {product.name.replace('Expertaid Technologies ', '')}
                   </a>
                 </li>
               ))}
@@ -123,7 +123,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   type="button"
-                  onClick={() => handleCopyChannel('Email', 'contact@instantexperts.in')}
+                  onClick={() => handleCopyChannel('Email', 'contact@expertaid.in')}
                   className="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-150 cursor-pointer text-left"
                 >
                   <span>Email</span>
@@ -153,7 +153,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   type="button"
-                  onClick={() => handleCopyChannel('LinkedIn', 'linkedin.com/company/instantexperts')}
+                  onClick={() => handleCopyChannel('LinkedIn', 'linkedin.com/company/expertaid-technologies')}
                   className="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-150 cursor-pointer text-left"
                 >
                   <span>LinkedIn</span>
@@ -179,7 +179,7 @@ export function Footer({ onNavigate }: FooterProps) {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© 2026 InstantExperts. All Rights Reserved.</p>
+          <p>© 2026 Expertaid Technologies. All Rights Reserved.</p>
           <p>Enterprise Software · ERP · CRM · Digital Transformation</p>
         </div>
       </div>

@@ -7,12 +7,17 @@ interface ServicesPageProps {
   onNavigate: (path: RoutePath, options?: { interest?: string }) => void;
 }
 
-type ServiceFilter = 'All Services' | 'Enterprise Platforms' | 'Engineering & Advisory';
+type ServiceFilter =
+  | 'All Services'
+  | 'Enterprise Platforms'
+  | 'Engineering & Advisory'
+  | 'AI & Intelligent Solutions';
 
 const FILTER_OPTIONS: ServiceFilter[] = [
   'All Services',
   'Enterprise Platforms',
   'Engineering & Advisory',
+  'AI & Intelligent Solutions',
 ];
 
 export function ServicesPage({ onNavigate }: ServicesPageProps) {

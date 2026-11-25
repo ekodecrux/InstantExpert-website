@@ -21,7 +21,7 @@ export interface ProductItem {
 export interface ServiceItem {
   number: string;
   title: string;
-  category: 'Enterprise Platforms' | 'Engineering & Advisory';
+  category: 'Enterprise Platforms' | 'Engineering & Advisory' | 'AI & Intelligent Solutions';
   description: string;
   deliverables: string;
   contactInterestValue: string;

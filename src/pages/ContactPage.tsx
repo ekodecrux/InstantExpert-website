@@ -74,7 +74,7 @@ export function ContactPage({ initialInterest }: ContactPageProps) {
 
   const formatEnquiryText = (data: FormState) => {
     return [
-      'InstantExperts — Project Enquiry',
+      'Expertaid Technologies — Project Enquiry',
       '--------------------------------',
       `Full Name: ${data.fullName || 'Not provided'}`,
       `Company Name: ${data.companyName || 'Not provided'}`,
@@ -131,7 +131,7 @@ export function ContactPage({ initialInterest }: ContactPageProps) {
               Let&apos;s Build Something Great Together
             </h1>
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Have a project in mind or looking for the right technology solution? Connect with InstantExperts. Our team will help you identify the right solution for your business.
+              Have a project in mind or looking for the right technology solution? Connect with Expertaid Technologies. Our team will help you identify the right solution for your business.
             </p>
           </div>
         </div>
@@ -159,7 +159,7 @@ export function ContactPage({ initialInterest }: ContactPageProps) {
                     <div>
                       <p className="text-xs text-slate-300">Business Enquiries</p>
                       <p className="text-sm font-semibold text-white">
-                        contact@instantexperts.in
+                        contact@expertaid.in
                       </p>
                     </div>
                   </div>

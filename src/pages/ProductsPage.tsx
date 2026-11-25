@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { PRODUCTS } from '../data/siteData';
 import { ProductItem, RoutePath } from '../types/navigation';
@@ -8,7 +9,25 @@ interface ProductsPageProps {
   onSelectProduct: (product: ProductItem) => void;
 }
 
+type ProductFilter = 'All Products' | 'Core Enterprise Suite' | 'AI & Intelligent Platforms';
+
+const FILTER_OPTIONS: ProductFilter[] = [
+  'All Products',
+  'Core Enterprise Suite',
+  'AI & Intelligent Platforms',
+];
+
+const CORE_IDS = new Set(['erp', 'crm', 'custom-apps']);
+
 export function ProductsPage({ onNavigate, onSelectProduct }: ProductsPageProps) {
+  const [activeFilter, setActiveFilter] = useState<ProductFilter>('All Products');
+
+  const filteredProducts = PRODUCTS.filter((product) => {
+    if (activeFilter === 'Core Enterprise Suite') return CORE_IDS.has(product.id);
+    if (activeFilter === 'AI & Intelligent Platforms') return !CORE_IDS.has(product.id);
+    return true;
+  });
+
   return (
     <div>
       {/* Dark Architectural Products Header */}
@@ -23,8 +42,28 @@ export function ProductsPage({ onNavigate, onSelectProduct }: ProductsPageProps)
               Powerful Software Products Designed for Modern Businesses
             </h1>
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Each InstantExperts platform is built for operational clarity, role-based security, and seamless integration across departments.
+              Each Expertaid Technologies platform is built for operational clarity, role-based security, and seamless integration across departments.
             </p>
+          </div>
+
+          <div className="mt-8 inline-flex flex-wrap items-center gap-1 p-1 bg-white/10 border border-white/15 rounded-md">
+            {FILTER_OPTIONS.map((option) => {
+              const isSelected = activeFilter === option;
+              return (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => setActiveFilter(option)}
+                  className={`px-3.5 py-2 text-xs sm:text-sm font-medium rounded transition-colors duration-150 whitespace-nowrap shrink-0 cursor-pointer ${
+                    isSelected
+                      ? 'bg-white text-[#0D1E33] font-semibold'
+                      : 'text-slate-200 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {option}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -32,7 +71,7 @@ export function ProductsPage({ onNavigate, onSelectProduct }: ProductsPageProps)
       {/* Individual Product Cards */}
       <section className="bg-white py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          {PRODUCTS.map((product, index) => {
+          {filteredProducts.map((product, index) => {
             const isReversed = index % 2 === 1;
             return (
               <article

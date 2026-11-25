@@ -42,7 +42,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
             <div className="lg:col-span-6 flex flex-col justify-center space-y-6">
-              <p className="text-sm font-medium text-[#8AC8FA]">About InstantExperts</p>
+              <p className="text-sm font-medium text-[#8AC8FA]">About Expertaid Technologies</p>
               <h1
                 className="font-display font-bold text-white tracking-tight leading-[1.12]"
                 style={{ fontSize: 'clamp(2.1rem, 3.6vw, 3.15rem)' }}
@@ -50,7 +50,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                 Your Trusted Partner in Technology and Business Transformation
               </h1>
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed">
-                InstantExperts is focused on delivering innovative software products, technology solutions, and professional services that help businesses operate smarter and more efficiently.
+                Expertaid Technologies is focused on delivering innovative software products, technology solutions, and professional services that help businesses operate smarter and more efficiently.
               </p>
               <p className="text-base text-slate-300 leading-relaxed">
                 Our goal is to bridge the gap between business requirements and technology through practical, scalable, and customer-focused solutions.
@@ -80,7 +80,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                 <ResilientImage
                   src={ABOUT_IMAGE.src}
                   alt={ABOUT_IMAGE.alt}
-                  title="InstantExperts Leadership & Solutions Architecture"
+                  title="Expertaid Technologies Leadership & Solutions Architecture"
                   className="lg:h-full object-cover"
                   aspectClass="aspect-[4/3] lg:aspect-auto lg:h-full"
                 />

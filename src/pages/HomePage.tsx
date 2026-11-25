@@ -37,7 +37,7 @@ export function HomePage({ onNavigate, onSelectProduct }: HomePageProps) {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-xl">
-                At InstantExperts, we deliver innovative technology products and professional business solutions that help organizations simplify operations, improve productivity, and accelerate growth.
+                At Expertaid Technologies, we deliver innovative technology products and professional business solutions that help organizations simplify operations, improve productivity, and accelerate growth.
               </p>
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
@@ -71,7 +71,7 @@ export function HomePage({ onNavigate, onSelectProduct }: HomePageProps) {
                   <ResilientImage
                     src={HERO_IMAGE.src}
                     alt={HERO_IMAGE.alt}
-                    title="InstantExperts Enterprise Technology Workspace"
+                    title="Expertaid Technologies Enterprise Technology Workspace"
                     className="lg:h-full object-cover"
                     aspectClass="aspect-video lg:aspect-auto lg:h-full"
                   />
@@ -110,14 +110,14 @@ export function HomePage({ onNavigate, onSelectProduct }: HomePageProps) {
         </div>
       </section>
 
-      {/* Why Choose InstantExperts? — Architectural Editorial Grid */}
+      {/* Why Choose Expertaid Technologies? — Architectural Editorial Grid */}
       <section className="bg-white py-16 sm:py-24 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             <div className="lg:col-span-4 space-y-5">
               <p className="text-sm font-medium text-[#1769AA]">Core Value Pillars</p>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#142C49] tracking-tight leading-[1.12]">
-                Why Choose InstantExperts?
+                Why Choose Expertaid Technologies?
               </h2>
               <p className="text-base text-slate-600 leading-relaxed">
                 We pair disciplined software engineering with structured operational workflows so your enterprise platforms stay fast, dependable, and ready to scale.
@@ -242,7 +242,7 @@ export function HomePage({ onNavigate, onSelectProduct }: HomePageProps) {
 
             {/* Secondary Stacked Products (CRM & Custom Apps) */}
             <div className="lg:col-span-5 flex flex-col gap-6">
-              {PRODUCTS.slice(1).map((product, idx) => (
+              {PRODUCTS.slice(1, 3).map((product, idx) => (
                 <article
                   key={product.id}
                   className="flex-1 bg-white rounded-lg border border-slate-200 p-7 flex flex-col justify-between space-y-5 hover:border-[#1769AA]/50 transition-colors duration-150"
@@ -290,6 +290,55 @@ export function HomePage({ onNavigate, onSelectProduct }: HomePageProps) {
               ))}
             </div>
           </div>
+
+          {/* Intelligent & AI Platforms Row */}
+          {PRODUCTS.length > 3 && (
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+              {PRODUCTS.slice(3).map((product, idx) => (
+                <article
+                  key={product.id}
+                  className="bg-white rounded-lg border border-slate-200 p-6 flex flex-col justify-between space-y-5 hover:border-[#1769AA]/50 transition-colors duration-150"
+                >
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-xs font-medium text-[#1769AA]">
+                        {product.category}
+                      </p>
+                      <span className="font-mono text-xs text-slate-400">
+                        0{idx + 4}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-xl font-bold text-[#142C49]">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {product.shortDescription}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={() => onSelectProduct(product)}
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1769AA] hover:text-[#142C49] transition-colors duration-150 cursor-pointer"
+                    >
+                      <span>Explore Product</span>
+                      <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onNavigate('/contact', { interest: product.contactInterestValue })
+                      }
+                      className="text-xs font-semibold text-[#142C49] hover:text-[#1769AA] cursor-pointer"
+                    >
+                      Request Demo
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -308,7 +357,7 @@ export function HomePage({ onNavigate, onSelectProduct }: HomePageProps) {
               onClick={() => onNavigate('/services')}
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#1769AA] hover:text-[#142C49] whitespace-nowrap shrink-0 cursor-pointer"
             >
-              <span>Explore all 8 services</span>
+              <span>Explore all {SERVICES.length} services</span>
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </button>
           </div>
@@ -354,7 +403,7 @@ export function HomePage({ onNavigate, onSelectProduct }: HomePageProps) {
               Ready to streamline your business operations?
             </h2>
             <p className="text-base text-slate-300 leading-relaxed">
-              Connect with our engineering and consulting specialists to evaluate InstantExperts ERP, CRM, or custom enterprise software for your organization.
+              Connect with our engineering and consulting specialists to evaluate Expertaid Technologies ERP, CRM, or custom enterprise software for your organization.
             </p>
           </div>
           <button

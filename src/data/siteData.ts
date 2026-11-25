@@ -1,13 +1,13 @@
 import { ProductItem, RoutePath, ServiceItem } from '../types/navigation';
 
 export const HERO_IMAGE = {
-  src: '/src/assets/images/hero_indian_tech_office_1795602809634.jpg',
-  alt: 'Indian software engineers and technology leaders collaborating in a modern sunlit corporate office',
+  src: '/src/assets/images/hero_expertaid_office_1795610357510.jpg',
+  alt: 'Indian software engineers and technology leaders collaborating in a modern Expertaid Technologies office',
 };
 
 export const ABOUT_IMAGE = {
   src: '/src/assets/images/about_indian_leadership_1795602810328.jpg',
-  alt: 'InstantExperts solutions architects reviewing enterprise digital transformation workflows',
+  alt: 'Expertaid Technologies solutions architects reviewing enterprise digital transformation workflows',
 };
 
 export const NAV_LINKS: { label: string; path: RoutePath }[] = [
@@ -75,15 +75,15 @@ export const WHY_CHOOSE_ITEMS = [
 export const PRODUCTS: ProductItem[] = [
   {
     id: 'erp',
-    slug: 'instantexperts-erp',
-    name: 'InstantExperts ERP',
+    slug: 'expertaid-erp',
+    name: 'Expertaid Technologies ERP',
     category: 'Enterprise Resource Planning',
     shortDescription:
       'Integrated enterprise resource planning for finance, inventory, sales, purchasing, HR, and business operations.',
     overview:
       'Unify accounting, multi-warehouse inventory, procurement, production planning, and human resources inside a single source of truth built for Indian and global enterprises.',
-    image: '/src/assets/images/product_erp_suite_1795602810684.jpg',
-    imageAlt: 'InstantExperts ERP financial and inventory command screen in a modern corporate office',
+    image: '/src/assets/images/product_erp_expertaid_1795610357558.jpg',
+    imageAlt: 'Expertaid Technologies ERP financial and inventory command screen in a modern corporate office',
     contactInterestValue: 'ERP Solutions',
     deploymentOptions: ['Cloud SaaS', 'Private VPC', 'On-Premise Enterprise'],
     keyModules: [
@@ -112,15 +112,15 @@ export const PRODUCTS: ProductItem[] = [
   },
   {
     id: 'crm',
-    slug: 'instantexperts-crm',
-    name: 'InstantExperts CRM',
+    slug: 'expertaid-crm',
+    name: 'Expertaid Technologies CRM',
     category: 'Customer Relationship Management',
     shortDescription:
       'Manage leads, customer relationships, sales pipelines, enquiries, follow-ups, and customer support.',
     overview:
       'Give sales, account management, and support teams structured visibility into every prospect enquiry, follow-up cadence, quotation stage, and post-sale ticket.',
     image: '/src/assets/images/product_crm_pipeline_1795602812313.jpg',
-    imageAlt: 'Sales and client success managers reviewing InstantExperts CRM pipeline analytics',
+    imageAlt: 'Sales and client success managers reviewing Expertaid Technologies CRM pipeline analytics',
     contactInterestValue: 'CRM Solutions',
     deploymentOptions: ['Cloud SaaS', 'Web & Mobile Companion', 'ERP-Integrated Mode'],
     keyModules: [
@@ -157,7 +157,7 @@ export const PRODUCTS: ProductItem[] = [
     overview:
       'When off-the-shelf software falls short, our engineering team architects, builds, and deploys custom web portals, dealer networks, and operational tools tailored to your workflow.',
     image: '/src/assets/images/product_custom_software_1795602811009.jpg',
-    imageAlt: 'InstantExperts software engineers designing custom enterprise application architecture',
+    imageAlt: 'Expertaid Technologies software engineers designing custom enterprise application architecture',
     contactInterestValue: 'Custom Business Applications',
     deploymentOptions: ['Dedicated Cloud', 'Hybrid API Integration', 'Internal Intranet'],
     keyModules: [
@@ -182,6 +182,117 @@ export const PRODUCTS: ProductItem[] = [
       'Software designed 100% around your proprietary business rules',
       'Seamless REST/webhook connectivity with existing ERP and accounting systems',
       'Full intellectual property clarity and long-term maintainability',
+    ],
+  },
+  {
+    id: 'ai-quality-intelligence',
+    slug: 'ai-quality-intelligence-platform',
+    name: 'AI Quality Intelligence Platform',
+    category: 'AI & Quality Assurance',
+    shortDescription:
+      'Automated quality monitoring, defect analytics, and predictive inspection workflows across production and service operations.',
+    overview:
+      'Continuously analyze operational telemetry, inspection logs, and supplier metrics to detect quality deviations early, reduce rework, and maintain audit-ready compliance across plants and branches.',
+    image: '/src/assets/images/product_ai_quality_1795607852948.jpg',
+    imageAlt: 'Quality engineer reviewing automated defect analytics on the AI Quality Intelligence Platform',
+    contactInterestValue: 'AI Quality Intelligence Platform',
+    deploymentOptions: ['Cloud SaaS', 'Private VPC', 'Edge-Connected Plant Mode'],
+    keyModules: [
+      {
+        title: 'Predictive Defect Analytics',
+        detail: 'Identify recurring failure signatures across batches, shifts, and equipment lines before rejection spikes.',
+      },
+      {
+        title: 'Automated Inspection Workflows',
+        detail: 'Digitized incoming, in-process, and pre-dispatch checklists with threshold alerts and photo evidence.',
+      },
+      {
+        title: 'Root-Cause & CAPA Tracking',
+        detail: 'Structured Corrective and Preventive Action workflows linked directly to responsible teams and timelines.',
+      },
+      {
+        title: 'Compliance & Audit Reporting',
+        detail: 'Exportable ISO-aligned quality scorecards, vendor defect trends, and real-time plant KPIs.',
+      },
+    ],
+    businessOutcomes: [
+      'Catch recurring production and vendor defects ahead of customer dispatch',
+      'Standardize quality inspection governance across multiple sites',
+      'Direct bi-directional hooks with Expertaid Technologies ERP inventory and procurement',
+    ],
+  },
+  {
+    id: 'expertbuddy',
+    slug: 'expertbuddy',
+    name: 'ExpertBuddy',
+    category: 'AI Workplace Companion',
+    shortDescription:
+      'Intelligent workplace assistant and guided team productivity companion built for fast-moving enterprise operations.',
+    overview:
+      'Give operations, support, and project teams instant answers from internal SOPs, policy manuals, and live business workflows inside one secure enterprise workspace.',
+    image: '/src/assets/images/product_expert_buddy_1795607852425.jpg',
+    imageAlt: 'Enterprise team collaborating with ExpertBuddy workflow companion across laptop and tablet',
+    contactInterestValue: 'ExpertBuddy',
+    deploymentOptions: ['Cloud SaaS', 'Private VPC', 'Enterprise SSO Mode'],
+    keyModules: [
+      {
+        title: 'Contextual SOP & Policy Search',
+        detail: 'Retrieve verified internal procedures, product specs, and troubleshooting steps in plain language.',
+      },
+      {
+        title: 'Guided Task & Ticket Routing',
+        detail: 'Draft structured service summaries, escalate exceptions, and trigger approval notifications automatically.',
+      },
+      {
+        title: 'Role-Based Knowledge Access',
+        detail: 'Enforce department-level permissions so finance, HR, and field teams see only authorized documents.',
+      },
+      {
+        title: 'CRM & Helpdesk Integration',
+        detail: 'Surface recommended responses and account context directly alongside customer support queues.',
+      },
+    ],
+    businessOutcomes: [
+      'Cut internal onboarding and cross-team knowledge lookup time significantly',
+      'Improve consistency across customer support and operational responses',
+      'Keep proprietary company documentation strictly within governed access boundaries',
+    ],
+  },
+  {
+    id: 'ai-tutor',
+    slug: 'ai-tutor',
+    name: 'AI Tutor',
+    category: 'AI Learning & Training',
+    shortDescription:
+      'Adaptive corporate training and personalized skill-building platform for employee onboarding and technical upskilling.',
+    overview:
+      'Accelerate workforce readiness with structured interactive learning tracks, adaptive practice assessments, and real-time competency dashboards tailored to each department.',
+    image: '/src/assets/images/product_ai_tutor_1795607853519.jpg',
+    imageAlt: 'Professionals completing adaptive training modules on the AI Tutor platform',
+    contactInterestValue: 'AI Tutor',
+    deploymentOptions: ['Cloud SaaS', 'Web & Mobile Learning Portal', 'Enterprise LMS Sync'],
+    keyModules: [
+      {
+        title: 'Adaptive Learning Paths',
+        detail: 'Personalize module pacing and practice exercises based on each learner’s role and assessment progress.',
+      },
+      {
+        title: 'Interactive Concept Coaching',
+        detail: 'Step-by-step guided explanations, scenario drills, and instant feedback on technical and process topics.',
+      },
+      {
+        title: 'Skill Assessments & Certifications',
+        detail: 'Timed evaluations, practical checkpoints, and automated completion certificates for compliance.',
+      },
+      {
+        title: 'Manager Readiness Analytics',
+        detail: 'Track cohort completion rates, skill gaps, and branch-level training milestones in real time.',
+      },
+    ],
+    businessOutcomes: [
+      'Standardize employee onboarding across distributed offices and field teams',
+      'Give managers clear visibility into team skill readiness before project deployment',
+      'Scale continuous technical upskilling without heavy classroom overhead',
     ],
   },
 ];
@@ -251,6 +362,30 @@ export const SERVICES: ServiceItem[] = [
     deliverables: 'Dedicated SLA helpdesk, performance tuning, security patching, and version upgrades.',
     contactInterestValue: 'Technical Support',
   },
+  {
+    number: '09',
+    title: 'AI Quality Intelligence Platform',
+    category: 'AI & Intelligent Solutions',
+    description: 'Automated quality monitoring and predictive inspection analytics',
+    deliverables: 'Anomaly detection pipelines, compliance scoring, root-cause dashboards, and ERP QA integration.',
+    contactInterestValue: 'AI Quality Intelligence Platform',
+  },
+  {
+    number: '10',
+    title: 'ExpertBuddy',
+    category: 'AI & Intelligent Solutions',
+    description: 'Intelligent workplace assistant and guided team companion',
+    deliverables: 'Contextual SOP retrieval, workflow assistance, automated task routing, and role-based access controls.',
+    contactInterestValue: 'ExpertBuddy',
+  },
+  {
+    number: '11',
+    title: 'AI Tutor',
+    category: 'AI & Intelligent Solutions',
+    description: 'Adaptive corporate training and personalized learning platform',
+    deliverables: 'Interactive skill modules, role-based onboarding journeys, assessment analytics, and progress tracking.',
+    contactInterestValue: 'AI Tutor',
+  },
 ];
 
 export const INTEREST_OPTIONS = [
@@ -264,4 +399,7 @@ export const INTEREST_OPTIONS = [
   'IT Consulting',
   'System Integration',
   'Technical Support',
+  'AI Quality Intelligence Platform',
+  'ExpertBuddy',
+  'AI Tutor',
 ];
