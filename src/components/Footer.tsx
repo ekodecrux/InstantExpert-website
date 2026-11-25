@@ -1,0 +1,188 @@
+import { useState } from 'react';
+import { ArrowUpRight, Check } from 'lucide-react';
+import { NAV_LINKS, PRODUCTS } from '../data/siteData';
+import { RoutePath } from '../types/navigation';
+import { BrandLogo } from './BrandLogo';
+
+interface FooterProps {
+  onNavigate: (path: RoutePath, options?: { interest?: string; productId?: string }) => void;
+}
+
+export function Footer({ onNavigate }: FooterProps) {
+  const [copiedChannel, setCopiedChannel] = useState<string | null>(null);
+
+  const handleCopyChannel = async (channel: string, value: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedChannel(channel);
+      setTimeout(() => setCopiedChannel(null), 2200);
+    } catch {
+      onNavigate('/contact');
+    }
+  };
+
+  return (
+    <footer className="bg-[#0D1E33] text-white border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Top Editorial Wordmark & Summary Row */}
+        <div className="pb-12 border-b border-white/10 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+          <div className="space-y-3 max-w-lg">
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('/');
+              }}
+              aria-label="InstantExperts Home"
+              className="inline-flex items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5EB3F6] rounded"
+            >
+              <BrandLogo className="h-11 sm:h-12 w-auto max-w-[240px]" />
+            </a>
+            <p className="text-sm font-medium text-[#8AC8FA]">
+              Smart Technology. Expert Solutions.
+            </p>
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Delivering practical ERP, CRM, and bespoke enterprise software engineered for clarity, security, and measurable operational scale.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onNavigate('/contact')}
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-[#0D1E33] bg-white hover:bg-[#EAF3FB] rounded-md transition-colors duration-150 whitespace-nowrap shrink-0 cursor-pointer self-start lg:self-auto"
+          >
+            <span>Start a Project Enquiry</span>
+            <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+          </button>
+        </div>
+
+        {/* Structured Links Grid */}
+        <div className="py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+          <div className="lg:col-span-4 space-y-2">
+            <h2 className="text-xs font-mono uppercase tracking-wider text-slate-400">
+              Engineering Hubs
+            </h2>
+            <p className="text-sm font-medium text-white">Ahmedabad · Hyderabad, India</p>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Enterprise ERP, CRM, and Custom Software Delivery
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div className="lg:col-span-3">
+            <h2 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-4">
+              Quick Links
+            </h2>
+            <ul className="space-y-2.5">
+              {NAV_LINKS.map((link) => (
+                <li key={link.path}>
+                  <a
+                    href={link.path}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate(link.path);
+                    }}
+                    className="text-sm text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Our Products */}
+          <div className="lg:col-span-3">
+            <h2 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-4">
+              Our Products
+            </h2>
+            <ul className="space-y-2.5">
+              {PRODUCTS.map((product) => (
+                <li key={product.id}>
+                  <a
+                    href="/products"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate('/products', { productId: product.id });
+                    }}
+                    className="text-sm text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
+                  >
+                    {product.name.replace('InstantExperts ', '')}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Connect With Us */}
+          <div className="lg:col-span-2">
+            <h2 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-4">
+              Connect With Us
+            </h2>
+            <ul className="space-y-2.5 text-sm text-slate-300">
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleCopyChannel('Email', 'contact@instantexperts.in')}
+                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-150 cursor-pointer text-left"
+                >
+                  <span>Email</span>
+                  {copiedChannel === 'Email' && (
+                    <span className="inline-flex items-center gap-1 text-xs text-[#8AC8FA]">
+                      <Check className="w-3.5 h-3.5" aria-hidden="true" />
+                      Copied
+                    </span>
+                  )}
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleCopyChannel('Phone', '+919281866990')}
+                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-150 cursor-pointer text-left"
+                >
+                  <span>Phone</span>
+                  {copiedChannel === 'Phone' && (
+                    <span className="inline-flex items-center gap-1 text-xs text-[#8AC8FA]">
+                      <Check className="w-3.5 h-3.5" aria-hidden="true" />
+                      Copied
+                    </span>
+                  )}
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleCopyChannel('LinkedIn', 'linkedin.com/company/instantexperts')}
+                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-150 cursor-pointer text-left"
+                >
+                  <span>LinkedIn</span>
+                  {copiedChannel === 'LinkedIn' && (
+                    <span className="inline-flex items-center gap-1 text-xs text-[#8AC8FA]">
+                      <Check className="w-3.5 h-3.5" aria-hidden="true" />
+                      Copied
+                    </span>
+                  )}
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('/contact')}
+                  className="hover:text-white transition-colors duration-150 cursor-pointer text-left"
+                >
+                  Social Media
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400">
+          <p>© 2026 InstantExperts. All Rights Reserved.</p>
+          <p>Enterprise Software · ERP · CRM · Digital Transformation</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
