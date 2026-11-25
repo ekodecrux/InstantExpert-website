@@ -1,4 +1,4 @@
-export type RoutePath = '/' | '/about' | '/products' | '/services' | '/contact';
+export type RoutePath = '/' | '/about' | '/products' | '/services' | '/contact' | '/privacy-policy';
 
 export interface ProductItem {
   id: string;

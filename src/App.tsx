@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { FaqChatbot } from './components/FaqChatbot';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { ProductDetailModal } from './components/ProductDetailModal';
@@ -7,11 +8,19 @@ import { PRODUCTS } from './data/siteData';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { HomePage } from './pages/HomePage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { ProductItem, RoutePath } from './types/navigation';
 
-const VALID_ROUTES: RoutePath[] = ['/', '/about', '/products', '/services', '/contact'];
+const VALID_ROUTES: RoutePath[] = [
+  '/',
+  '/about',
+  '/products',
+  '/services',
+  '/contact',
+  '/privacy-policy',
+];
 
 function parseRoute(pathname: string): RoutePath {
   const normalized = pathname === '/' ? '/' : pathname.replace(/\/+$/, '');
@@ -27,6 +36,7 @@ export default function App() {
   );
   const [contactInterest, setContactInterest] = useState<string | undefined>(undefined);
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -71,6 +81,7 @@ export default function App() {
               <HomePage
                 onNavigate={handleNavigate}
                 onSelectProduct={setSelectedProduct}
+                onOpenChatbot={() => setIsChatbotOpen(true)}
               />
             )}
             {currentPath === '/about' && <AboutPage onNavigate={handleNavigate} />}
@@ -84,15 +95,28 @@ export default function App() {
             {currentPath === '/contact' && (
               <ContactPage initialInterest={contactInterest} />
             )}
+            {currentPath === '/privacy-policy' && (
+              <PrivacyPolicyPage onNavigate={handleNavigate} />
+            )}
           </motion.div>
         </AnimatePresence>
       </main>
 
-      <Footer onNavigate={handleNavigate} />
+      <Footer
+        onNavigate={handleNavigate}
+        onOpenChatbot={() => setIsChatbotOpen(true)}
+      />
 
       <ProductDetailModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
+        onNavigate={handleNavigate}
+      />
+
+      <FaqChatbot
+        isOpen={isChatbotOpen}
+        onToggle={() => setIsChatbotOpen((prev) => !prev)}
+        onClose={() => setIsChatbotOpen(false)}
         onNavigate={handleNavigate}
       />
     </div>

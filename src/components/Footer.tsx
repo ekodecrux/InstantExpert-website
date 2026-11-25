@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { ArrowUpRight, Check } from 'lucide-react';
-import { NAV_LINKS, PRODUCTS } from '../data/siteData';
+import { buildWhatsAppUrl, NAV_LINKS, PRODUCTS, WHATSAPP_DISPLAY } from '../data/siteData';
 import { RoutePath } from '../types/navigation';
 import { BrandLogo } from './BrandLogo';
 
 interface FooterProps {
   onNavigate: (path: RoutePath, options?: { interest?: string; productId?: string }) => void;
+  onOpenChatbot: () => void;
 }
 
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer({ onNavigate, onOpenChatbot }: FooterProps) {
   const [copiedChannel, setCopiedChannel] = useState<string | null>(null);
 
   const handleCopyChannel = async (channel: string, value: string) => {
@@ -88,6 +89,27 @@ export function Footer({ onNavigate }: FooterProps) {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="/privacy-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/privacy-policy');
+                  }}
+                  className="text-sm text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={onOpenChatbot}
+                  className="text-sm text-slate-300 hover:text-white transition-colors duration-150 cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
+                >
+                  FAQs &amp; Chatbot
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -166,6 +188,18 @@ export function Footer({ onNavigate }: FooterProps) {
                 </button>
               </li>
               <li>
+                <a
+                  href={buildWhatsAppUrl(
+                    'Hello Expertaid Technologies, I have an enquiry from your website.'
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors duration-150"
+                >
+                  WhatsApp ({WHATSAPP_DISPLAY})
+                </a>
+              </li>
+              <li>
                 <button
                   type="button"
                   onClick={() => onNavigate('/contact')}
@@ -180,7 +214,20 @@ export function Footer({ onNavigate }: FooterProps) {
 
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400">
           <p>© 2026 Expertaid Technologies. All Rights Reserved.</p>
-          <p>Enterprise Software · ERP · CRM · Digital Transformation</p>
+          <div className="flex flex-wrap items-center gap-4">
+            <a
+              href="/privacy-policy"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('/privacy-policy');
+              }}
+              className="text-slate-300 hover:text-white underline underline-offset-4 transition-colors duration-150"
+            >
+              Privacy Policy
+            </a>
+            <span aria-hidden="true" className="text-white/20">·</span>
+            <span>Enterprise Software · ERP · CRM · Digital Transformation</span>
+          </div>
         </div>
       </div>
     </footer>

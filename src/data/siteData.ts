@@ -403,3 +403,79 @@ export const INTEREST_OPTIONS = [
   'ExpertBuddy',
   'AI Tutor',
 ];
+
+export const WHATSAPP_NUMBER = '919281866990';
+export const WHATSAPP_DISPLAY = '+919281866990';
+
+export function buildWhatsAppUrl(message: string): string {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+  keywords: string[];
+  actionLabel?: string;
+  actionPath?: RoutePath;
+  actionInterest?: string;
+}
+
+export const FAQ_ITEMS: FaqItem[] = [
+  {
+    id: 'products',
+    question: 'What software products does Expertaid Technologies offer?',
+    answer:
+      'We offer six flagship solutions: Expertaid Technologies ERP, Expertaid Technologies CRM, Custom Business Applications, AI Quality Intelligence Platform, ExpertBuddy, and AI Tutor—available across cloud SaaS, private VPC, and on-premise deployments.',
+    keywords: ['product', 'products', 'software', 'offer', 'erp', 'crm', 'platform', 'suite'],
+    actionLabel: 'Explore Products',
+    actionPath: '/products',
+  },
+  {
+    id: 'erp-crm',
+    question: 'How do Expertaid ERP and CRM work together?',
+    answer:
+      'Expertaid CRM captures leads, quotations, and support tickets, while Expertaid ERP unifies GST finance, multi-warehouse inventory, purchasing, and HR. Both systems integrate seamlessly so closed deals flow straight into invoicing and dispatch.',
+    keywords: ['erp', 'crm', 'integrate', 'integration', 'finance', 'inventory', 'sales', 'gst'],
+    actionLabel: 'Enquire about ERP & CRM',
+    actionPath: '/contact',
+    actionInterest: 'ERP Solutions',
+  },
+  {
+    id: 'ai-solutions',
+    question: 'What are AI Quality Intelligence Platform, ExpertBuddy, and AI Tutor?',
+    answer:
+      'AI Quality Intelligence Platform monitors defects and compliance telemetry in real time; ExpertBuddy is an enterprise workplace companion for instant SOP guidance and task routing; and AI Tutor provides adaptive employee onboarding and skill-building modules.',
+    keywords: ['ai', 'quality', 'expertbuddy', 'buddy', 'tutor', 'learning', 'training', 'defect'],
+    actionLabel: 'View AI Platforms',
+    actionPath: '/products',
+  },
+  {
+    id: 'services',
+    question: 'Do you provide custom software development and IT consulting?',
+    answer:
+      'Yes. Beyond our packaged platforms, we deliver 11 specialized services including Custom Software Development, ERP Implementation, Website & Mobile App Development, System Integration, IT Consulting, and 24/7 Technical Support.',
+    keywords: ['service', 'services', 'custom', 'consulting', 'website', 'mobile', 'support', 'development'],
+    actionLabel: 'View All Services',
+    actionPath: '/services',
+  },
+  {
+    id: 'offices-contact',
+    question: 'Where are Expertaid Technologies offices located and how can I reach you?',
+    answer:
+      'Our corporate offices are located in Ahmedabad & Hyderabad, India (Mon–Sat, 9:30 AM – 6:30 PM IST). You can email contact@expertaid.in, call +919281866990, or send an instant WhatsApp notification to +919281866990.',
+    keywords: ['office', 'offices', 'location', 'ahmedabad', 'hyderabad', 'address', 'email', 'phone', 'whatsapp', 'contact', 'reach', 'call'],
+    actionLabel: 'Open Contact Page',
+    actionPath: '/contact',
+  },
+  {
+    id: 'demo-pricing',
+    question: 'How do I request a product demo or project quote?',
+    answer:
+      'Visit our Contact Us page to submit your project scope, or message us directly on WhatsApp at +919281866990. Our solutions architects review your operational workflow before recommending deployment options.',
+    keywords: ['demo', 'price', 'pricing', 'cost', 'quote', 'enquiry', 'start', 'book'],
+    actionLabel: 'Request a Demo',
+    actionPath: '/contact',
+  },
+];
+

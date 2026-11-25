@@ -20,7 +20,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#0D1E33]/95 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-24 flex items-center justify-between gap-8">
         {/* Zone 1: Brand logo (single-line, no subtitle/tagline in top bar) */}
         <a
           href="/"
@@ -28,7 +28,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
           aria-label="Expertaid Technologies Home"
           className="inline-flex items-center whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5EB3F6] rounded"
         >
-          <BrandLogo className="h-12 sm:h-14 w-auto max-w-[260px]" />
+          <BrandLogo className="h-12 sm:h-20 w-auto max-w-[340px]" />
         </a>
 
         {/* Zone 2: Clean single-line text navigation links */}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Check, CheckCircle2, Copy, Mail, MapPin, Phone, Send } from 'lucide-react';
-import { INTEREST_OPTIONS } from '../data/siteData';
+import { Check, CheckCircle2, Copy, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
+import { buildWhatsAppUrl, INTEREST_OPTIONS, WHATSAPP_DISPLAY } from '../data/siteData';
 
 interface ContactPageProps {
   initialInterest?: string;
@@ -169,8 +169,25 @@ export function ContactPage({ initialInterest }: ContactPageProps) {
                     <div>
                       <p className="text-xs text-slate-300">Enterprise Desk</p>
                       <p className="text-sm font-semibold text-white tabular-nums">
-                        +919281866990
+                        {WHATSAPP_DISPLAY}
                       </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5">
+                    <MessageCircle className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" aria-hidden="true" />
+                    <div>
+                      <p className="text-xs text-slate-300">WhatsApp Notification</p>
+                      <a
+                        href={buildWhatsAppUrl(
+                          'Hello Expertaid Technologies, I would like to connect regarding your technology solutions.'
+                        )}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-white hover:text-[#8AC8FA] underline underline-offset-4 tabular-nums transition-colors"
+                      >
+                        Message {WHATSAPP_DISPLAY} on WhatsApp
+                      </a>
                     </div>
                   </div>
 
@@ -272,6 +289,16 @@ export function ContactPage({ initialInterest }: ContactPageProps) {
                     </div>
 
                     <div className="flex flex-wrap items-center gap-3">
+                      <a
+                        href={buildWhatsAppUrl(formatEnquiryText(submittedEnquiry))}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md transition-colors duration-150"
+                      >
+                        <MessageCircle className="w-4 h-4" aria-hidden="true" />
+                        <span>Send WhatsApp Notification</span>
+                      </a>
+
                       <button
                         type="button"
                         onClick={handleCopyDetails}
@@ -463,6 +490,16 @@ export function ContactPage({ initialInterest }: ContactPageProps) {
                         <Send className="w-4 h-4" aria-hidden="true" />
                         <span>Preview &amp; Submit Enquiry</span>
                       </button>
+
+                      <a
+                        href={buildWhatsAppUrl(formatEnquiryText(form))}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md transition-colors duration-150"
+                      >
+                        <MessageCircle className="w-4 h-4" aria-hidden="true" />
+                        <span>Notify via WhatsApp</span>
+                      </a>
 
                       <button
                         type="button"

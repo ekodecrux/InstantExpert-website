@@ -1,9 +1,13 @@
-import { ArrowRight, ArrowUpRight, CheckCircle2, Cpu, Layers, ShieldCheck, TrendingUp } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, ArrowUpRight, CheckCircle2, ChevronDown, Cpu, Layers, MessageCircle, MessageSquare, ShieldCheck, TrendingUp } from 'lucide-react';
 import {
+  buildWhatsAppUrl,
   ENTERPRISE_METRICS,
+  FAQ_ITEMS,
   HERO_IMAGE,
   PRODUCTS,
   SERVICES,
+  WHATSAPP_DISPLAY,
   WHY_CHOOSE_ITEMS,
 } from '../data/siteData';
 import { ProductItem, RoutePath } from '../types/navigation';
@@ -12,11 +16,13 @@ import { ResilientImage } from '../components/ResilientImage';
 interface HomePageProps {
   onNavigate: (path: RoutePath, options?: { interest?: string }) => void;
   onSelectProduct: (product: ProductItem) => void;
+  onOpenChatbot: () => void;
 }
 
 const PILLAR_ICONS = [Cpu, Layers, ShieldCheck, TrendingUp];
 
-export function HomePage({ onNavigate, onSelectProduct }: HomePageProps) {
+export function HomePage({ onNavigate, onSelectProduct, onOpenChatbot }: HomePageProps) {
+  const [openFaqId, setOpenFaqId] = useState<string>(FAQ_ITEMS[0].id);
   return (
     <div>
       {/* Dark Architectural Studio Hero */}
@@ -391,6 +397,87 @@ export function HomePage({ onNavigate, onSelectProduct }: HomePageProps) {
                 </div>
               </button>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions & Chatbot */}
+      <section className="bg-[#EAF3FB]/50 py-16 sm:py-24 border-b border-slate-200" id="faqs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+            <div className="lg:col-span-4 space-y-5">
+              <p className="text-sm font-medium text-[#1769AA]">FAQs &amp; Instant Help</p>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#142C49] tracking-tight leading-[1.12]">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-base text-slate-600 leading-relaxed">
+                Find quick answers about Expertaid Technologies ERP, CRM, AI platforms, and delivery timelines, or chat directly with our FAQ Assistant.
+              </p>
+              <div className="pt-2 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={onOpenChatbot}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-[#1769AA] hover:bg-[#12568C] rounded-md transition-colors duration-150 cursor-pointer"
+                >
+                  <MessageSquare className="w-4 h-4" aria-hidden="true" />
+                  <span>Open FAQ Chatbot</span>
+                </button>
+                <a
+                  href={buildWhatsAppUrl(
+                    'Hello Expertaid Technologies, I have a question regarding your software solutions.'
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#142C49] bg-white border border-slate-300 hover:border-emerald-600 hover:text-emerald-800 rounded-md transition-colors duration-150"
+                >
+                  <MessageCircle className="w-4 h-4 text-emerald-700" aria-hidden="true" />
+                  <span>WhatsApp {WHATSAPP_DISPLAY}</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-8 border border-slate-200 rounded-lg divide-y divide-slate-200 bg-white overflow-hidden">
+              {FAQ_ITEMS.map((faq) => {
+                const isOpen = openFaqId === faq.id;
+                return (
+                  <div key={faq.id}>
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      onClick={() => setOpenFaqId(isOpen ? '' : faq.id)}
+                      className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-[#EAF3FB]/40 transition-colors duration-150 cursor-pointer"
+                    >
+                      <span className="font-display text-base sm:text-lg font-semibold text-[#142C49]">
+                        {faq.question}
+                      </span>
+                      <ChevronDown
+                        className={`w-5 h-5 text-[#1769AA] shrink-0 transition-transform duration-150 ${
+                          isOpen ? 'rotate-180' : ''
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-6 pb-5 pt-1 text-sm sm:text-base text-slate-600 leading-relaxed space-y-3">
+                        <p>{faq.answer}</p>
+                        {faq.actionLabel && faq.actionPath && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              onNavigate(faq.actionPath!, { interest: faq.actionInterest })
+                            }
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1769AA] hover:text-[#142C49] cursor-pointer"
+                          >
+                            <span>{faq.actionLabel}</span>
+                            <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
