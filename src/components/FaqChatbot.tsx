@@ -3,6 +3,7 @@ import { ArrowRight, MessageCircle, MessageSquare, Send, X } from 'lucide-react'
 import {
   buildWhatsAppUrl,
   FAQ_ITEMS,
+  SERVICES,
   WHATSAPP_DISPLAY,
 } from '../data/siteData';
 import { RoutePath } from '../types/navigation';
@@ -28,27 +29,116 @@ const INITIAL_MESSAGES: ChatMessage[] = [
   {
     id: 'welcome',
     sender: 'bot',
-    text: `Welcome to Expertaid Technologies. Ask a question about our ERP, CRM, AI platforms, services, or reach our team directly on WhatsApp at ${WHATSAPP_DISPLAY}.`,
+    text: 'Welcome to Expertaid Technologies. Ask me about our services (Software Development, ERP Implementation, CRM, System Integration, IT Consulting, Technical Support), our software products, or select a FAQ topic below.',
   },
 ];
 
+function isExplicitNumberRequest(normalized: string): boolean {
+  const numberIntentTerms = [
+    'whatsapp number',
+    'phone number',
+    'contact number',
+    'mobile number',
+    'telephone',
+    'helpline',
+    'call number',
+    'number',
+    'phone',
+    'mobile',
+    'call',
+    'whatsapp no',
+  ];
+  return numberIntentTerms.some((term) => normalized.includes(term));
+}
+
 function findBestFaqResponse(input: string): ChatMessage {
   const normalized = input.toLowerCase().trim();
+  const id = `bot-${Date.now()}`;
 
+  // 1. Explicit request for phone / WhatsApp number
+  if (isExplicitNumberRequest(normalized)) {
+    return {
+      id,
+      sender: 'bot',
+      text: `You can reach our Enterprise Desk by phone or WhatsApp at ${WHATSAPP_DISPLAY} (Mon–Sat, 9:30 AM – 6:30 PM IST), or email contact@expertaid.in.`,
+      actionLabel: 'Open Contact Page',
+      actionPath: '/contact',
+      showWhatsApp: true,
+    };
+  }
+
+  // 2. Greeting / help intent
+  if (/^(hi|hello|hey|good morning|good afternoon|good evening|namaste)\b/.test(normalized)) {
+    return {
+      id,
+      sender: 'bot',
+      text: 'Hello! How can Expertaid Technologies assist you today? You can ask about ERP Implementation, CRM Solutions, Custom Software, Website or Mobile App Development, System Integration, IT Consulting, Technical Support, or our AI platforms.',
+      actionLabel: 'Browse All Services',
+      actionPath: '/services',
+    };
+  }
+
+  // 3. Privacy Policy
   if (
     normalized.includes('privacy') ||
     normalized.includes('cookie') ||
-    normalized.includes('data')
+    normalized.includes('personal data')
   ) {
     return {
-      id: `bot-${Date.now()}`,
+      id,
       sender: 'bot',
-      text: 'At Expertaid, we protect your personal data and never sell or rent your information. You can review our full Privacy Policy or contact contact@expertaid.in for data requests.',
+      text: 'At Expertaid, we protect your personal data and never sell or rent your information. You can review our full Privacy Policy or email contact@expertaid.in for access or deletion requests.',
       actionLabel: 'Read Privacy Policy',
       actionPath: '/privacy-policy',
     };
   }
 
+  // 4. Direct match against all 11 Services
+  for (const service of SERVICES) {
+    const titleLower = service.title.toLowerCase();
+    if (normalized.includes(titleLower)) {
+      return {
+        id,
+        sender: 'bot',
+        text: `${service.title}: ${service.description}. Scope includes ${service.deliverables}`,
+        actionLabel: `Enquire about ${service.title}`,
+        actionPath: '/contact',
+        actionInterest: service.contactInterestValue,
+        showWhatsApp: true,
+      };
+    }
+  }
+
+  // 5. General "services" list query
+  if (normalized.includes('service') || normalized.includes('what do you do')) {
+    return {
+      id,
+      sender: 'bot',
+      text: 'We provide 11 core services: Software Development, ERP Implementation, CRM Solutions, Website Development, Mobile App Development, IT Consulting, System Integration, Technical Support, AI Quality Intelligence Platform, ExpertBuddy, and AI Tutor.',
+      actionLabel: 'View All 11 Services',
+      actionPath: '/services',
+    };
+  }
+
+  // 6. Demo / Pricing / Quote
+  if (
+    normalized.includes('demo') ||
+    normalized.includes('price') ||
+    normalized.includes('pricing') ||
+    normalized.includes('cost') ||
+    normalized.includes('quote')
+  ) {
+    return {
+      id,
+      sender: 'bot',
+      text: 'Pricing and implementation timelines are tailored to your modules, user count, and deployment model (Cloud SaaS, Private VPC, or On-Premise). Submit your requirements on our Contact page or start a WhatsApp chat for a custom proposal.',
+      actionLabel: 'Request a Quote',
+      actionPath: '/contact',
+      showWhatsApp: true,
+    };
+  }
+
+  // 7. Weighted keyword & question match across FAQ_ITEMS
   let bestMatch = FAQ_ITEMS[0];
   let bestScore = 0;
 
@@ -73,20 +163,21 @@ function findBestFaqResponse(input: string): ChatMessage {
 
   if (bestScore > 0) {
     return {
-      id: `bot-${Date.now()}`,
+      id,
       sender: 'bot',
       text: bestMatch.answer,
       actionLabel: bestMatch.actionLabel,
       actionPath: bestMatch.actionPath,
       actionInterest: bestMatch.actionInterest,
-      showWhatsApp: bestMatch.id === 'offices-contact' || bestMatch.id === 'demo-pricing',
+      showWhatsApp: true,
     };
   }
 
+  // 8. Automatic fallback reply (without displaying the WhatsApp number)
   return {
-    id: `bot-${Date.now()}`,
+    id,
     sender: 'bot',
-    text: `Thanks for your question. For detailed project guidance or custom requirements, you can send an instant WhatsApp message to our Enterprise Desk (${WHATSAPP_DISPLAY}) or submit an enquiry form.`,
+    text: 'Thank you for reaching out. Our solutions team can help with ERP, CRM, custom software, system integration, IT consulting, and AI platforms. Please use the Contact Us page or start a WhatsApp chat below to share your requirements.',
     actionLabel: 'Go to Contact Us',
     actionPath: '/contact',
     showWhatsApp: true,
@@ -151,7 +242,7 @@ export function FaqChatbot({
       actionLabel: item.actionLabel,
       actionPath: item.actionPath,
       actionInterest: item.actionInterest,
-      showWhatsApp: item.id === 'offices-contact' || item.id === 'demo-pricing',
+      showWhatsApp: true,
     };
     setMessages((prev) => [...prev, userMsg, replyMsg]);
   };
@@ -164,16 +255,16 @@ export function FaqChatbot({
           role="dialog"
           aria-modal="false"
           aria-label="Expertaid Technologies FAQ Chatbot"
-          className="w-[calc(100vw-2rem)] sm:w-[380px] max-h-[75vh] bg-white rounded-lg border border-slate-300 shadow-2xl flex flex-col overflow-hidden"
+          className="w-[calc(100vw-2rem)] sm:w-[390px] max-h-[75vh] bg-white rounded-lg border border-slate-300 shadow-2xl flex flex-col overflow-hidden"
         >
-          {/* Chatbot Header */}
+          {/* Chatbot Header (no WhatsApp number displayed) */}
           <div className="px-4 py-3.5 bg-[#0D1E33] text-white border-b border-white/10 flex items-center justify-between gap-3">
             <div>
               <h2 className="font-display text-sm font-bold text-white">
                 Expertaid FAQ Assistant
               </h2>
               <p className="text-xs text-[#8AC8FA]">
-                Instant Answers · WhatsApp {WHATSAPP_DISPLAY}
+                Automated Service &amp; Product Support
               </p>
             </div>
             <button
@@ -205,7 +296,7 @@ export function FaqChatbot({
                   <p>{msg.text}</p>
 
                   {msg.sender === 'bot' && (msg.actionLabel || msg.showWhatsApp) && (
-                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex flex-wrap gap-2">
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex flex-wrap gap-3">
                       {msg.actionLabel && msg.actionPath && (
                         <button
                           type="button"
@@ -225,7 +316,7 @@ export function FaqChatbot({
                       {msg.showWhatsApp && (
                         <a
                           href={buildWhatsAppUrl(
-                            'Hello Expertaid Technologies, I would like to learn more about your solutions.'
+                            'Hello Expertaid Technologies, I would like to learn more about your services and solutions.'
                           )}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -240,14 +331,15 @@ export function FaqChatbot({
                 </div>
               </div>
             ))}
+            <div ref={messagesEndRef} />
 
-            {/* Suggested FAQ Topics */}
+            {/* Suggested Service & Product FAQ Topics */}
             <div className="pt-2">
               <p className="text-[11px] font-medium text-slate-500 mb-2">
-                Popular FAQ topics:
+                Service &amp; solution FAQs:
               </p>
               <div className="flex flex-wrap gap-1.5">
-                {FAQ_ITEMS.slice(0, 4).map((item) => (
+                {FAQ_ITEMS.slice(0, 6).map((item) => (
                   <button
                     key={item.id}
                     type="button"
@@ -261,7 +353,7 @@ export function FaqChatbot({
             </div>
           </div>
 
-          {/* Direct WhatsApp Escalation Strip */}
+          {/* Direct WhatsApp Escalation Strip (without displaying number) */}
           <div className="px-4 py-2 bg-[#EAF3FB] border-t border-slate-200 flex items-center justify-between gap-2">
             <span className="text-xs font-medium text-[#142C49]">
               Need live team assistance?
@@ -272,10 +364,10 @@ export function FaqChatbot({
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-white bg-emerald-700 hover:bg-emerald-800 rounded transition-colors whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-white bg-emerald-700 hover:bg-emerald-800 rounded transition-colors whitespace-nowrap shrink-0"
             >
               <MessageCircle className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>WhatsApp {WHATSAPP_DISPLAY}</span>
+              <span>Chat on WhatsApp</span>
             </a>
           </div>
 
@@ -295,7 +387,7 @@ export function FaqChatbot({
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask about ERP, CRM, AI, offices..."
+              placeholder="Ask about services, ERP, CRM, AI..."
               className="flex-1 min-w-0 px-3 py-2 text-sm text-[#142C49] bg-white border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1769AA]"
             />
             <button
@@ -309,7 +401,7 @@ export function FaqChatbot({
         </div>
       )}
 
-      {/* Floating Launcher Button (compact h-11 to respect mobile sticky cap) */}
+      {/* Floating Launcher Button */}
       <button
         type="button"
         onClick={onToggle}

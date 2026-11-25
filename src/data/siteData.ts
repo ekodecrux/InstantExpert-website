@@ -427,54 +427,75 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: 'What software products does Expertaid Technologies offer?',
     answer:
       'We offer six flagship solutions: Expertaid Technologies ERP, Expertaid Technologies CRM, Custom Business Applications, AI Quality Intelligence Platform, ExpertBuddy, and AI Tutor—available across cloud SaaS, private VPC, and on-premise deployments.',
-    keywords: ['product', 'products', 'software', 'offer', 'erp', 'crm', 'platform', 'suite'],
+    keywords: ['product', 'products', 'software', 'offer', 'platform', 'suite'],
     actionLabel: 'Explore Products',
     actionPath: '/products',
   },
   {
-    id: 'erp-crm',
-    question: 'How do Expertaid ERP and CRM work together?',
+    id: 'erp-implementation',
+    question: 'What does your ERP Implementation service include?',
     answer:
-      'Expertaid CRM captures leads, quotations, and support tickets, while Expertaid ERP unifies GST finance, multi-warehouse inventory, purchasing, and HR. Both systems integrate seamlessly so closed deals flow straight into invoicing and dispatch.',
-    keywords: ['erp', 'crm', 'integrate', 'integration', 'finance', 'inventory', 'sales', 'gst'],
-    actionLabel: 'Enquire about ERP & CRM',
+      'Our ERP Implementation service covers operational workflow discovery, chart-of-accounts and opening-stock migration, GST configuration, role-based permissions, user training, and go-live support tailored to your branches and warehouses.',
+    keywords: ['erp', 'implementation', 'deploy', 'deployment', 'migration', 'gst', 'inventory', 'finance', 'accounting'],
+    actionLabel: 'Enquire about ERP Implementation',
     actionPath: '/contact',
-    actionInterest: 'ERP Solutions',
+    actionInterest: 'ERP Implementation',
+  },
+  {
+    id: 'crm-solutions',
+    question: 'How can your CRM Solutions help our sales and support teams?',
+    answer:
+      'We configure structured lead capture, automated follow-up reminders, visual sales pipelines, quotation workflows, and SLA-tracked customer support desks so no prospect enquiry or service ticket is missed.',
+    keywords: ['crm', 'lead', 'leads', 'sales', 'pipeline', 'follow-up', 'customer', 'ticket', 'enquiry'],
+    actionLabel: 'Enquire about CRM Solutions',
+    actionPath: '/contact',
+    actionInterest: 'CRM Solutions',
+  },
+  {
+    id: 'custom-software-dev',
+    question: 'Do you build custom software, business websites, and mobile apps?',
+    answer:
+      'Yes. Our engineering teams deliver Custom Software Development, responsive Website Development, and iOS/Android Mobile App Development built around your proprietary operational workflows, dealer portals, and field teams.',
+    keywords: ['custom', 'software', 'website', 'web', 'mobile', 'app', 'android', 'ios', 'portal', 'development'],
+    actionLabel: 'View Engineering Services',
+    actionPath: '/services',
+  },
+  {
+    id: 'system-integration',
+    question: 'Can you integrate our existing ERP, CRM, and third-party tools?',
+    answer:
+      'Yes. Through our System Integration service, we build secure bi-directional APIs and webhooks connecting ERP, CRM, payment gateways, e-commerce storefronts, biometric attendance, and BI dashboards.',
+    keywords: ['integrate', 'integration', 'api', 'connect', 'sync', 'webhook', 'payment', 'gateway', 'bi'],
+    actionLabel: 'Enquire about System Integration',
+    actionPath: '/contact',
+    actionInterest: 'System Integration',
+  },
+  {
+    id: 'it-consulting-support',
+    question: 'Do you provide IT Consulting and ongoing Technical Support?',
+    answer:
+      'We offer IT Consulting for infrastructure audits, cloud readiness, and technology roadmaps, alongside dedicated Technical Support covering SLA monitoring, security patching, performance tuning, and version upgrades.',
+    keywords: ['consulting', 'advisory', 'roadmap', 'audit', 'support', 'maintenance', 'sla', 'helpdesk', 'upgrade'],
+    actionLabel: 'Discuss Consulting & Support',
+    actionPath: '/contact',
+    actionInterest: 'IT Consulting',
   },
   {
     id: 'ai-solutions',
     question: 'What are AI Quality Intelligence Platform, ExpertBuddy, and AI Tutor?',
     answer:
       'AI Quality Intelligence Platform monitors defects and compliance telemetry in real time; ExpertBuddy is an enterprise workplace companion for instant SOP guidance and task routing; and AI Tutor provides adaptive employee onboarding and skill-building modules.',
-    keywords: ['ai', 'quality', 'expertbuddy', 'buddy', 'tutor', 'learning', 'training', 'defect'],
+    keywords: ['ai', 'quality', 'expertbuddy', 'buddy', 'tutor', 'learning', 'training', 'defect', 'sop'],
     actionLabel: 'View AI Platforms',
     actionPath: '/products',
   },
   {
-    id: 'services',
-    question: 'Do you provide custom software development and IT consulting?',
+    id: 'offices-location',
+    question: 'Where are Expertaid Technologies offices located?',
     answer:
-      'Yes. Beyond our packaged platforms, we deliver 11 specialized services including Custom Software Development, ERP Implementation, Website & Mobile App Development, System Integration, IT Consulting, and 24/7 Technical Support.',
-    keywords: ['service', 'services', 'custom', 'consulting', 'website', 'mobile', 'support', 'development'],
-    actionLabel: 'View All Services',
-    actionPath: '/services',
-  },
-  {
-    id: 'offices-contact',
-    question: 'Where are Expertaid Technologies offices located and how can I reach you?',
-    answer:
-      'Our corporate offices are located in Ahmedabad & Hyderabad, India (Mon–Sat, 9:30 AM – 6:30 PM IST). You can email contact@expertaid.in, call +919281866990, or send an instant WhatsApp notification to +919281866990.',
-    keywords: ['office', 'offices', 'location', 'ahmedabad', 'hyderabad', 'address', 'email', 'phone', 'whatsapp', 'contact', 'reach', 'call'],
+      'Our corporate offices are located in Ahmedabad & Hyderabad, India (Mon–Sat, 9:30 AM – 6:30 PM IST). You can reach us via email at contact@expertaid.in, submit an enquiry on our Contact page, or message us on WhatsApp.',
+    keywords: ['office', 'offices', 'location', 'ahmedabad', 'hyderabad', 'address', 'hours', 'email'],
     actionLabel: 'Open Contact Page',
-    actionPath: '/contact',
-  },
-  {
-    id: 'demo-pricing',
-    question: 'How do I request a product demo or project quote?',
-    answer:
-      'Visit our Contact Us page to submit your project scope, or message us directly on WhatsApp at +919281866990. Our solutions architects review your operational workflow before recommending deployment options.',
-    keywords: ['demo', 'price', 'pricing', 'cost', 'quote', 'enquiry', 'start', 'book'],
-    actionLabel: 'Request a Demo',
     actionPath: '/contact',
   },
 ];

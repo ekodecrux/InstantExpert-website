@@ -7,7 +7,6 @@ import {
   HERO_IMAGE,
   PRODUCTS,
   SERVICES,
-  WHATSAPP_DISPLAY,
   WHY_CHOOSE_ITEMS,
 } from '../data/siteData';
 import { ProductItem, RoutePath } from '../types/navigation';
@@ -431,7 +430,7 @@ export function HomePage({ onNavigate, onSelectProduct, onOpenChatbot }: HomePag
                   className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#142C49] bg-white border border-slate-300 hover:border-emerald-600 hover:text-emerald-800 rounded-md transition-colors duration-150"
                 >
                   <MessageCircle className="w-4 h-4 text-emerald-700" aria-hidden="true" />
-                  <span>WhatsApp {WHATSAPP_DISPLAY}</span>
+                  <span>Chat on WhatsApp</span>
                 </a>
               </div>
             </div>

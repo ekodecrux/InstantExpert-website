@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { ArrowUpRight, Check } from 'lucide-react';
-import { buildWhatsAppUrl, NAV_LINKS, PRODUCTS, WHATSAPP_DISPLAY } from '../data/siteData';
+import { ArrowUpRight, Facebook, Instagram, Linkedin, Mail, MessageCircle, Twitter } from 'lucide-react';
+import { buildWhatsAppUrl, NAV_LINKS, PRODUCTS } from '../data/siteData';
 import { RoutePath } from '../types/navigation';
 import { BrandLogo } from './BrandLogo';
 
@@ -10,18 +9,6 @@ interface FooterProps {
 }
 
 export function Footer({ onNavigate, onOpenChatbot }: FooterProps) {
-  const [copiedChannel, setCopiedChannel] = useState<string | null>(null);
-
-  const handleCopyChannel = async (channel: string, value: string) => {
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopiedChannel(channel);
-      setTimeout(() => setCopiedChannel(null), 2200);
-    } catch {
-      onNavigate('/contact');
-    }
-  };
-
   return (
     <footer className="bg-[#0D1E33] text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -136,56 +123,20 @@ export function Footer({ onNavigate, onOpenChatbot }: FooterProps) {
             </ul>
           </div>
 
-          {/* Connect With Us */}
+          {/* Connect With Us: Direct redirect links for Email, WhatsApp, and Social Media */}
           <div className="lg:col-span-2">
             <h2 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-4">
               Connect With Us
             </h2>
             <ul className="space-y-2.5 text-sm text-slate-300">
               <li>
-                <button
-                  type="button"
-                  onClick={() => handleCopyChannel('Email', 'contact@expertaid.in')}
-                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-150 cursor-pointer text-left"
+                <a
+                  href="mailto:contact@expertaid.in?subject=Project%20Enquiry%20-%20Expertaid%20Technologies"
+                  className="inline-flex items-center gap-2 text-slate-200 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
                 >
+                  <Mail className="w-4 h-4 text-[#8AC8FA] shrink-0" aria-hidden="true" />
                   <span>Email</span>
-                  {copiedChannel === 'Email' && (
-                    <span className="inline-flex items-center gap-1 text-xs text-[#8AC8FA]">
-                      <Check className="w-3.5 h-3.5" aria-hidden="true" />
-                      Copied
-                    </span>
-                  )}
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => handleCopyChannel('Phone', '+919281866990')}
-                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-150 cursor-pointer text-left"
-                >
-                  <span>Phone</span>
-                  {copiedChannel === 'Phone' && (
-                    <span className="inline-flex items-center gap-1 text-xs text-[#8AC8FA]">
-                      <Check className="w-3.5 h-3.5" aria-hidden="true" />
-                      Copied
-                    </span>
-                  )}
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => handleCopyChannel('LinkedIn', 'linkedin.com/company/expertaid-technologies')}
-                  className="inline-flex items-center gap-1.5 hover:text-white transition-colors duration-150 cursor-pointer text-left"
-                >
-                  <span>LinkedIn</span>
-                  {copiedChannel === 'LinkedIn' && (
-                    <span className="inline-flex items-center gap-1 text-xs text-[#8AC8FA]">
-                      <Check className="w-3.5 h-3.5" aria-hidden="true" />
-                      Copied
-                    </span>
-                  )}
-                </button>
+                </a>
               </li>
               <li>
                 <a
@@ -194,19 +145,55 @@ export function Footer({ onNavigate, onOpenChatbot }: FooterProps) {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors duration-150"
+                  className="inline-flex items-center gap-2 text-slate-200 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
                 >
-                  WhatsApp ({WHATSAPP_DISPLAY})
+                  <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" aria-hidden="true" />
+                  <span>WhatsApp</span>
                 </a>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/contact')}
-                  className="hover:text-white transition-colors duration-150 cursor-pointer text-left"
+                <a
+                  href="https://www.linkedin.com/company/expertaid-technologies"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-slate-200 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
                 >
-                  Social Media
-                </button>
+                  <Linkedin className="w-4 h-4 text-[#8AC8FA] shrink-0" aria-hidden="true" />
+                  <span>LinkedIn</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/expertaidtechnologies"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-slate-200 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
+                >
+                  <Instagram className="w-4 h-4 text-[#8AC8FA] shrink-0" aria-hidden="true" />
+                  <span>Instagram</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://x.com/expertaidtech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-slate-200 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
+                >
+                  <Twitter className="w-4 h-4 text-[#8AC8FA] shrink-0" aria-hidden="true" />
+                  <span>X (Twitter)</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61596792427672"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-slate-200 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
+                >
+                  <Facebook className="w-4 h-4 text-[#8AC8FA] shrink-0" aria-hidden="true" />
+                  <span>Facebook</span>
+                </a>
               </li>
             </ul>
           </div>
