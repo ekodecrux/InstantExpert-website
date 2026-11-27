@@ -74,7 +74,7 @@ export function ContactPage({ initialInterest }: ContactPageProps) {
 
   const formatEnquiryText = (data: FormState) => {
     return [
-      'Expertaid Technologies — Project Enquiry',
+      'Instant Experts — Project Enquiry',
       '--------------------------------',
       `Full Name: ${data.fullName || 'Not provided'}`,
       `Company Name: ${data.companyName || 'Not provided'}`,
@@ -131,7 +131,7 @@ export function ContactPage({ initialInterest }: ContactPageProps) {
               Let&apos;s Build Something Great Together
             </h1>
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Have a project in mind or looking for the right technology solution? Connect with Expertaid Technologies. Our team will help you identify the right solution for your business.
+              Have a project in mind or looking for the right technology solution? Connect with Instant Experts. Our team will help you identify the right solution for your business.
             </p>
           </div>
         </div>
@@ -159,7 +159,7 @@ export function ContactPage({ initialInterest }: ContactPageProps) {
                     <div>
                       <p className="text-xs text-slate-300">Business Enquiries</p>
                       <p className="text-sm font-semibold text-white">
-                        contact@expertaid.in
+                        contact@instantexperts.net
                       </p>
                     </div>
                   </div>
@@ -180,7 +180,7 @@ export function ContactPage({ initialInterest }: ContactPageProps) {
                       <p className="text-xs text-slate-300">WhatsApp Notification</p>
                       <a
                         href={buildWhatsAppUrl(
-                          'Hello Expertaid Technologies, I would like to connect regarding your technology solutions.'
+                          'Hello Instant Experts, I would like to connect regarding your technology solutions.'
                         )}
                         target="_blank"
                         rel="noopener noreferrer"

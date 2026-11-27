@@ -42,7 +42,7 @@ export function ProductsPage({ onNavigate, onSelectProduct }: ProductsPageProps)
               Powerful Software Products Designed for Modern Businesses
             </h1>
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              Each Expertaid Technologies platform is built for operational clarity, role-based security, and seamless integration across departments.
+              Each Instant Experts platform is built for operational clarity, role-based security, and seamless integration across departments.
             </p>
           </div>
 

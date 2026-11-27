@@ -25,10 +25,10 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
         <a
           href="/"
           onClick={(e) => handleNavClick(e, '/')}
-          aria-label="Expertaid Technologies Home"
+          aria-label="Instant Experts Home"
           className="inline-flex items-center whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1769AA] rounded"
         >
-          <BrandLogo variant="light" className="h-12 sm:h-16 md:h-[72px] w-auto max-w-[320px]" />
+          <BrandLogo variant="light" className="h-11 sm:h-14 md:h-15 w-auto max-w-[260px] sm:max-w-[320px]" />
         </a>
 
         {/* Zone 2: Clean single-line text navigation links */}

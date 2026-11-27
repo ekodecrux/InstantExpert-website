@@ -116,7 +116,7 @@ export function Footer({ onNavigate, onOpenChatbot }: FooterProps) {
                     }}
                     className="text-sm text-slate-300 hover:text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5EB3F6] rounded"
                   >
-                    {product.name.replace('Expertaid Technologies ', '')}
+                    {product.name.replace(/^(Expertaid Technologies|Instant Experts)\s+/, '')}
                   </a>
                 </li>
               ))}

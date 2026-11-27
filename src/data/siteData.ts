@@ -2,12 +2,12 @@ import { ProductItem, RoutePath, ServiceItem } from '../types/navigation';
 
 export const HERO_IMAGE = {
   src: '/src/assets/images/hero_expertaid_office_1795610357510.jpg',
-  alt: 'Indian software engineers and technology leaders collaborating in a modern Expertaid Technologies office',
+  alt: 'Indian software engineers and technology leaders collaborating in a modern Instant Experts office',
 };
 
 export const ABOUT_IMAGE = {
   src: '/src/assets/images/about_indian_leadership_1795602810328.jpg',
-  alt: 'Expertaid Technologies solutions architects reviewing enterprise digital transformation workflows',
+  alt: 'Instant Experts solutions architects reviewing enterprise digital transformation workflows',
 };
 
 export const NAV_LINKS: { label: string; path: RoutePath }[] = [
@@ -75,15 +75,15 @@ export const WHY_CHOOSE_ITEMS = [
 export const PRODUCTS: ProductItem[] = [
   {
     id: 'erp',
-    slug: 'expertaid-erp',
-    name: 'Expertaid Technologies ERP',
+    slug: 'instant-erp',
+    name: 'Instant ERP',
     category: 'Enterprise Resource Planning',
     shortDescription:
       'Integrated enterprise resource planning for finance, inventory, sales, purchasing, HR, and business operations.',
     overview:
       'Unify accounting, multi-warehouse inventory, procurement, production planning, and human resources inside a single source of truth built for Indian and global enterprises.',
     image: '/src/assets/images/product_erp_expertaid_1795610357558.jpg',
-    imageAlt: 'Expertaid Technologies ERP financial and inventory command screen in a modern corporate office',
+    imageAlt: 'Instant ERP financial and inventory command screen in a modern corporate office',
     contactInterestValue: 'ERP Solutions',
     deploymentOptions: ['Cloud SaaS', 'Private VPC', 'On-Premise Enterprise'],
     keyModules: [
@@ -112,15 +112,15 @@ export const PRODUCTS: ProductItem[] = [
   },
   {
     id: 'crm',
-    slug: 'expertaid-crm',
-    name: 'Expertaid Technologies CRM',
+    slug: 'experts-crm',
+    name: 'Experts CRM',
     category: 'Customer Relationship Management',
     shortDescription:
       'Manage leads, customer relationships, sales pipelines, enquiries, follow-ups, and customer support.',
     overview:
       'Give sales, account management, and support teams structured visibility into every prospect enquiry, follow-up cadence, quotation stage, and post-sale ticket.',
     image: '/src/assets/images/product_crm_pipeline_1795602812313.jpg',
-    imageAlt: 'Sales and client success managers reviewing Expertaid Technologies CRM pipeline analytics',
+    imageAlt: 'Sales and client success managers reviewing Experts CRM pipeline analytics',
     contactInterestValue: 'CRM Solutions',
     deploymentOptions: ['Cloud SaaS', 'Web & Mobile Companion', 'ERP-Integrated Mode'],
     keyModules: [
@@ -157,7 +157,7 @@ export const PRODUCTS: ProductItem[] = [
     overview:
       'When off-the-shelf software falls short, our engineering team architects, builds, and deploys custom web portals, dealer networks, and operational tools tailored to your workflow.',
     image: '/src/assets/images/product_custom_software_1795602811009.jpg',
-    imageAlt: 'Expertaid Technologies software engineers designing custom enterprise application architecture',
+    imageAlt: 'Instant Experts software engineers designing custom enterprise application architecture',
     contactInterestValue: 'Custom Business Applications',
     deploymentOptions: ['Dedicated Cloud', 'Hybrid API Integration', 'Internal Intranet'],
     keyModules: [
@@ -218,7 +218,7 @@ export const PRODUCTS: ProductItem[] = [
     businessOutcomes: [
       'Catch recurring production and vendor defects ahead of customer dispatch',
       'Standardize quality inspection governance across multiple sites',
-      'Direct bi-directional hooks with Expertaid Technologies ERP inventory and procurement',
+      'Direct bi-directional hooks with Instant ERP inventory and procurement',
     ],
   },
   {
@@ -424,9 +424,9 @@ export interface FaqItem {
 export const FAQ_ITEMS: FaqItem[] = [
   {
     id: 'products',
-    question: 'What software products does Expertaid Technologies offer?',
+    question: 'What software products does Instant Experts offer?',
     answer:
-      'We offer six flagship solutions: Expertaid Technologies ERP, Expertaid Technologies CRM, Custom Business Applications, AI Quality Intelligence Platform, ExpertBuddy, and AI Tutor—available across cloud SaaS, private VPC, and on-premise deployments.',
+      'We offer six flagship solutions: Instant ERP, Experts CRM, Custom Business Applications, AI Quality Intelligence Platform, ExpertBuddy, and AI Tutor—available across cloud SaaS, private VPC, and on-premise deployments.',
     keywords: ['product', 'products', 'software', 'offer', 'platform', 'suite'],
     actionLabel: 'Explore Products',
     actionPath: '/products',
@@ -491,9 +491,9 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     id: 'offices-location',
-    question: 'Where are Expertaid Technologies offices located?',
+    question: 'Where are Instant Experts offices located?',
     answer:
-      'Our corporate offices are located in Ahmedabad & Hyderabad, India (Mon–Sat, 9:30 AM – 6:30 PM IST). You can reach us via email at contact@expertaid.in, submit an enquiry on our Contact page, or message us on WhatsApp.',
+      'Our corporate offices are located in Ahmedabad & Hyderabad, India (Mon–Sat, 9:30 AM – 6:30 PM IST). You can reach us via email at contact@instantexperts.net, submit an enquiry on our Contact page, or message us on WhatsApp.',
     keywords: ['office', 'offices', 'location', 'ahmedabad', 'hyderabad', 'address', 'hours', 'email'],
     actionLabel: 'Open Contact Page',
     actionPath: '/contact',

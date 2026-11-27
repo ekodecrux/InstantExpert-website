@@ -7,9 +7,10 @@ interface BrandLogoProps {
 }
 
 export const BRAND_LOGO_DARK_BG =
-  '/assets/aistudio/EXPERTAID_TECH_LOGO_PNG__WHITE__6962226c.png';
+  '/assets/aistudio/Instant-removebg-white_1eb0f162.png';
 
-export const BRAND_LOGO_LIGHT_BG = '/assets/aistudio/Xpert_948c33a1.jpg';
+export const BRAND_LOGO_LIGHT_BG =
+  '/assets/aistudio/Instant-removebg-preview_605918af.png';
 
 export function BrandLogo({
   className = 'h-9 sm:h-10 w-auto',
@@ -25,7 +26,7 @@ export function BrandLogo({
         }`}
       >
         <BrandMark className="w-8 h-8 shrink-0" inverted={variant === 'dark'} />
-        <span className="font-display">Expertaid Technologies</span>
+        <span className="font-display">Instant Experts</span>
       </span>
     );
   }
@@ -33,7 +34,7 @@ export function BrandLogo({
   return (
     <img
       src={variant === 'light' ? BRAND_LOGO_LIGHT_BG : BRAND_LOGO_DARK_BG}
-      alt="Expertaid Technologies"
+      alt="Instant Experts"
       referrerPolicy="no-referrer"
       onError={() => setImgError(true)}
       className={`object-contain shrink-0 select-none ${className}`}

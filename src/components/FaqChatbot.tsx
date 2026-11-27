@@ -29,7 +29,7 @@ const INITIAL_MESSAGES: ChatMessage[] = [
   {
     id: 'welcome',
     sender: 'bot',
-    text: 'Welcome to Expertaid Technologies. Ask me about our services (Software Development, ERP Implementation, CRM, System Integration, IT Consulting, Technical Support), our software products, or select a FAQ topic below.',
+    text: 'Welcome to Instant Experts. Ask me about our services (Software Development, ERP Implementation, CRM, System Integration, IT Consulting, Technical Support), our software products, or select a FAQ topic below.',
   },
 ];
 
@@ -60,7 +60,7 @@ function findBestFaqResponse(input: string): ChatMessage {
     return {
       id,
       sender: 'bot',
-      text: `You can reach our Enterprise Desk by phone or WhatsApp at ${WHATSAPP_DISPLAY} (Mon–Sat, 9:30 AM – 6:30 PM IST), or email contact@expertaid.in.`,
+      text: `You can reach our Enterprise Desk by phone or WhatsApp at ${WHATSAPP_DISPLAY} (Mon–Sat, 9:30 AM – 6:30 PM IST), or email contact@instantexperts.net.`,
       actionLabel: 'Open Contact Page',
       actionPath: '/contact',
       showWhatsApp: true,
@@ -72,7 +72,7 @@ function findBestFaqResponse(input: string): ChatMessage {
     return {
       id,
       sender: 'bot',
-      text: 'Hello! How can Expertaid Technologies assist you today? You can ask about ERP Implementation, CRM Solutions, Custom Software, Website or Mobile App Development, System Integration, IT Consulting, Technical Support, or our AI platforms.',
+      text: 'Hello! How can Instant Experts assist you today? You can ask about ERP Implementation, CRM Solutions, Custom Software, Website or Mobile App Development, System Integration, IT Consulting, Technical Support, or our AI platforms.',
       actionLabel: 'Browse All Services',
       actionPath: '/services',
     };
@@ -87,7 +87,7 @@ function findBestFaqResponse(input: string): ChatMessage {
     return {
       id,
       sender: 'bot',
-      text: 'At Expertaid, we protect your personal data and never sell or rent your information. You can review our full Privacy Policy or email contact@expertaid.in for access or deletion requests.',
+      text: 'At Instant Experts, we protect your personal data and never sell or rent your information. You can review our full Privacy Policy or email contact@instantexperts.net for access or deletion requests.',
       actionLabel: 'Read Privacy Policy',
       actionPath: '/privacy-policy',
     };
@@ -254,14 +254,14 @@ export function FaqChatbot({
         <div
           role="dialog"
           aria-modal="false"
-          aria-label="Expertaid Technologies FAQ Chatbot"
+          aria-label="Instant Experts FAQ Chatbot"
           className="w-[calc(100vw-2rem)] sm:w-[390px] max-h-[75vh] bg-white rounded-lg border border-slate-300 shadow-2xl flex flex-col overflow-hidden"
         >
           {/* Chatbot Header (no WhatsApp number displayed) */}
           <div className="px-4 py-3.5 bg-[#0D1E33] text-white border-b border-white/10 flex items-center justify-between gap-3">
             <div>
               <h2 className="font-display text-sm font-bold text-white">
-                Expertaid FAQ Assistant
+                Instant Experts FAQ Assistant
               </h2>
               <p className="text-xs text-[#8AC8FA]">
                 Automated Service &amp; Product Support
@@ -316,7 +316,7 @@ export function FaqChatbot({
                       {msg.showWhatsApp && (
                         <a
                           href={buildWhatsAppUrl(
-                            'Hello Expertaid Technologies, I would like to learn more about your services and solutions.'
+                            'Hello Instant Experts, I would like to learn more about your services and solutions.'
                           )}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -360,7 +360,7 @@ export function FaqChatbot({
             </span>
             <a
               href={buildWhatsAppUrl(
-                'Hello Expertaid Technologies, I have an enquiry from your website FAQ.'
+                'Hello Instant Experts, I have an enquiry from your website FAQ.'
               )}
               target="_blank"
               rel="noopener noreferrer"

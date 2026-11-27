@@ -190,7 +190,7 @@ export function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps) {
               onClick={() => onNavigate('/contact')}
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-[#1769AA] hover:bg-[#12568C] rounded-md transition-colors duration-150 cursor-pointer"
             >
-              <span>Contact Expertaid Technologies</span>
+              <span>Contact Instant Experts</span>
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </button>
           </div>
